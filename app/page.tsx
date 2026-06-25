@@ -56,7 +56,7 @@ export default function Home() {
             <div className="w-9 h-9 bg-green-600 rounded-full flex items-center justify-center">
               <MdOutlineElectricBolt className="text-white text-lg" />
             </div>
-            <span className="font-bold text-gray-900 text-lg">ThermoAísla</span>
+            <span className="font-bold text-gray-900 text-lg">Aisla Global</span>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
             <a href="#como-funciona" className="hover:text-green-600 transition-colors">¿Cómo funciona?</a>
@@ -246,7 +246,7 @@ export default function Home() {
 
                   {/* Privacy text */}
                   <p className="text-xs text-gray-400 leading-relaxed pt-1">
-                    Termo Aísla se compromete a proteger y respetar su privacidad. Solo utilizaremos sus datos personales para ponernos en contacto con usted en relación con la presente solicitud sobre el servicio de aislamiento de buhardillas. Al hacer clic en «Enviar» a continuación, autoriza a la empresa Termo Aísla a almacenar y tratar sus datos personales.
+                    Aisla Global se compromete a proteger y respetar su privacidad. Solo utilizaremos sus datos personales para ponernos en contacto con usted en relación con la presente solicitud sobre el servicio de aislamiento de buhardillas. Al hacer clic en «Enviar» a continuación, autoriza a la empresa Aisla Global a almacenar y tratar sus datos personales.
                   </p>
 
                   {/* reCAPTCHA placeholder */}
@@ -517,8 +517,8 @@ export default function Home() {
             <a href="tel:+34900000000" className="inline-flex items-center gap-2 bg-white text-green-700 font-bold px-8 py-3.5 rounded-full hover:bg-green-50 transition-colors text-sm shadow-lg">
               <FaPhone /> Llámenos: +34 900 000 000
             </a>
-            <a href="mailto:info@thermoaisla.es" className="inline-flex items-center gap-2 border-2 border-white text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors text-sm">
-              <FaEnvelope /> info@thermoaisla.es
+            <a href="mailto:info@aislaglobal.es" className="inline-flex items-center gap-2 border-2 border-white text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors text-sm">
+              <FaEnvelope /> info@aislaglobal.es
             </a>
           </div>
         </div>
@@ -531,12 +531,12 @@ export default function Home() {
             <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
               <MdOutlineElectricBolt className="text-white text-base" />
             </div>
-            <span className="text-white font-semibold">ThermoAísla</span>
+            <span className="text-white font-semibold">Aisla Global</span>
           </div>
           <p className="text-xs max-w-sm">
             Cumple con el Real Decreto 36/2023 · Código Técnico de la Edificación (CTE) · Certificados de Ahorro Energético (CAE)
           </p>
-          <p className="text-xs">&copy; {new Date().getFullYear()} ThermoAísla. Todos los derechos reservados.</p>
+          <p className="text-xs">&copy; {new Date().getFullYear()} Aisla Global. Todos los derechos reservados.</p>
         </div>
       </footer>
 
