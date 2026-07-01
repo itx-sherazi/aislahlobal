@@ -7,12 +7,45 @@ import {
   FaBars, FaTimes, FaChevronDown, FaPhone, FaEnvelope,
 } from "react-icons/fa";
 import { MdOutlineElectricBolt } from "react-icons/md";
+import { FaWhatsapp } from "react-icons/fa";
+
+const WA_NUMBER = "34600329428";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [tipoVivienda, setTipoVivienda] = useState("");
   const [tieneAttico, setTieneAttico] = useState("");
+
+  // Form fields state
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [codigoPostal, setCodigoPostal] = useState("");
+  const [ciudad, setCiudad] = useState("");
+  const [anio, setAnio] = useState("");
+  const [superficie, setSuperficie] = useState("51 - 100 m²");
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const msg = [
+      `👋 Hola, me interesa el aislamiento gratuito de buhardilla.`,
+      ``,
+      `📋 *Mis datos:*`,
+      `• Nombre: ${nombre} ${apellido}`,
+      `• Correo: ${correo}`,
+      `• Teléfono: ${telefono}`,
+      `• Código postal: ${codigoPostal}`,
+      `• Ciudad: ${ciudad}`,
+      `• Tipo de vivienda: ${tipoVivienda}`,
+      `• Año de construcción: ${anio}`,
+      `• ¿Tiene buhardilla?: ${tieneAttico}`,
+      `• Superficie: ${superficie}`,
+    ].join("\n");
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
+  }
 
   const faqs = [
     {
@@ -56,7 +89,7 @@ export default function Home() {
             <div className="w-9 h-9 bg-green-600 rounded-full flex items-center justify-center">
               <MdOutlineElectricBolt className="text-white text-lg" />
             </div>
-            <span className="font-bold text-gray-900 text-lg">Aisla Global</span>
+            <span className="font-bold text-gray-900 text-lg">Aisla.se</span>
           </div>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
             <a href="#como-funciona" className="hover:text-green-600 transition-colors">¿Cómo funciona?</a>
@@ -149,16 +182,16 @@ export default function Home() {
               </div>
 
               <div className="px-6 py-5">
-                <form className="space-y-3">
+                <form className="space-y-3" onSubmit={handleSubmit}>
                   {/* Nombre + Apellido */}
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-1">Nombre <span className="text-red-500">*</span></label>
-                      <input type="text" className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500 placeholder-gray-300" />
+                      <input required type="text" value={nombre} onChange={e => setNombre(e.target.value)} className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500 placeholder-gray-300" />
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-1">Apellido <span className="text-red-500">*</span></label>
-                      <input type="text" className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500 placeholder-gray-300" />
+                      <input required type="text" value={apellido} onChange={e => setApellido(e.target.value)} className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500 placeholder-gray-300" />
                     </div>
                   </div>
 
@@ -166,18 +199,18 @@ export default function Home() {
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-1">Correo <span className="text-red-500">*</span></label>
-                      <input type="email" className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500" />
+                      <input required type="email" value={correo} onChange={e => setCorreo(e.target.value)} className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500" />
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-1">Teléfono <span className="text-red-500">*</span></label>
                       <div className="flex gap-1">
                         <select className="border border-gray-300 rounded px-2 py-2 text-xs text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-green-500 w-16">
-                          <option>PK</option>
                           <option>ES</option>
+                          <option>PK</option>
                           <option>FR</option>
                           <option>DE</option>
                         </select>
-                        <input type="tel" placeholder="+92" className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500 min-w-0" />
+                        <input required type="tel" value={telefono} onChange={e => setTelefono(e.target.value)} placeholder="+34" className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500 min-w-0" />
                       </div>
                     </div>
                   </div>
@@ -186,11 +219,11 @@ export default function Home() {
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-1">Código postal <span className="text-red-500">*</span></label>
-                      <input type="text" className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500" />
+                      <input required type="text" value={codigoPostal} onChange={e => setCodigoPostal(e.target.value)} className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500" />
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-1">Ciudad</label>
-                      <input type="text" className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500" />
+                      <input type="text" value={ciudad} onChange={e => setCiudad(e.target.value)} className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-green-500" />
                     </div>
                   </div>
 
@@ -212,7 +245,7 @@ export default function Home() {
                       <div className="space-y-1.5">
                         {["Antes de 2005", "Después de 2005"].map((op) => (
                           <label key={op} className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-                            <input type="radio" name="anio" value={op} className="accent-green-600" />
+                            <input type="radio" name="anio" value={op} checked={anio === op} onChange={() => setAnio(op)} className="accent-green-600" />
                             {op}
                           </label>
                         ))}
@@ -235,7 +268,7 @@ export default function Home() {
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-2">¿Cuál es la superficie habitable de tu vivienda (en m²)? <span className="text-red-500">*</span></label>
-                      <select className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-green-500">
+                      <select value={superficie} onChange={e => setSuperficie(e.target.value)} className="w-full border border-gray-300 rounded px-3 py-2 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-green-500">
                         <option>51 - 100 m²</option>
                         <option>Menos de 50 m²</option>
                         <option>101 - 150 m²</option>
@@ -246,7 +279,7 @@ export default function Home() {
 
                   {/* Privacy text */}
                   <p className="text-xs text-gray-400 leading-relaxed pt-1">
-                    Aisla Global se compromete a proteger y respetar su privacidad. Solo utilizaremos sus datos personales para ponernos en contacto con usted en relación con la presente solicitud sobre el servicio de aislamiento de buhardillas. Al hacer clic en «Enviar» a continuación, autoriza a la empresa Aisla Global a almacenar y tratar sus datos personales.
+                    Aisla.se se compromete a proteger y respetar su privacidad. Solo utilizaremos sus datos personales para ponernos en contacto con usted en relación con la presente solicitud sobre el servicio de aislamiento de buhardillas. Al hacer clic en «Enviar» a continuación, autoriza a la empresa Aisla.se a almacenar y tratar sus datos personales.
                   </p>
 
                   {/* reCAPTCHA placeholder */}
@@ -259,13 +292,13 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Submit */}
+                  {/* Submit → WhatsApp */}
                   <button
                     type="submit"
-                    className="w-full text-white font-bold py-3.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-all"
+                    className="w-full text-white font-bold py-3.5 rounded-lg text-sm flex items-center justify-center gap-2 transition-all hover:opacity-90 active:scale-95"
                     style={{ backgroundColor: "#f97316" }}
                   >
-                    Enviar
+                    <FaWhatsapp className="text-lg" /> Enviar por WhatsApp
                   </button>
                 </form>
               </div>
@@ -514,11 +547,11 @@ export default function Home() {
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">¿Listo para ahorrar hasta un 30% en sus facturas?</h2>
           <p className="text-green-100 text-sm sm:text-base mb-6">Rellene el formulario arriba  verificación gratuita, sin compromiso, resultados en 24 horas.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="tel:+34900000000" className="inline-flex items-center gap-2 bg-white text-green-700 font-bold px-8 py-3.5 rounded-full hover:bg-green-50 transition-colors text-sm shadow-lg">
-              <FaPhone /> Llámenos: +34 900 000 000
+            <a href="tel:919978648" className="inline-flex items-center gap-2 bg-white text-green-700 font-bold px-8 py-3.5 rounded-full hover:bg-green-50 transition-colors text-sm shadow-lg">
+              <FaPhone /> 919 978 648
             </a>
-            <a href="mailto:info@aislaglobal.es" className="inline-flex items-center gap-2 border-2 border-white text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors text-sm">
-              <FaEnvelope /> info@aislaglobal.es
+            <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 border-2 border-white text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white/10 transition-colors text-sm">
+              <FaWhatsapp className="text-lg" /> WhatsApp: +34 600 32 94 28
             </a>
           </div>
         </div>
@@ -526,19 +559,53 @@ export default function Home() {
 
       {/* ── FOOTER ── */}
       <footer className="bg-gray-900 text-gray-400 py-10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
-              <MdOutlineElectricBolt className="text-white text-base" />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            {/* Brand */}
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+                <MdOutlineElectricBolt className="text-white text-base" />
+              </div>
+              <span className="text-white font-bold text-lg">Aisla.se</span>
             </div>
-            <span className="text-white font-semibold">Aisla Global</span>
+
+            {/* Contact */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 text-sm">
+              <a href="tel:919978648" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                <FaPhone className="text-green-400" />
+                <span>919 978 648</span>
+              </a>
+              <a href={`https://wa.me/${WA_NUMBER}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                <FaWhatsapp className="text-green-400 text-base" />
+                <span>+34 600 32 94 28</span>
+              </a>
+              <a href="mailto:info@aisla.se" className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                <FaEnvelope className="text-green-400" />
+                <span>info@aisla.se</span>
+              </a>
+            </div>
+
+            {/* Legal */}
+            <p className="text-xs text-gray-500 max-w-xs">
+              Cumple con el RD 36/2023 · CTE · CAE<br />
+              &copy; {new Date().getFullYear()} Aisla.se. Todos los derechos reservados.
+            </p>
           </div>
-          <p className="text-xs max-w-sm">
-            Cumple con el Real Decreto 36/2023 · Código Técnico de la Edificación (CTE) · Certificados de Ahorro Energético (CAE)
-          </p>
-          <p className="text-xs">&copy; {new Date().getFullYear()} Aisla Global. Todos los derechos reservados.</p>
         </div>
       </footer>
+
+      {/* ── FLOATING WHATSAPP BUTTON ── */}
+      <a
+        href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("👋 Hola, me interesa el aislamiento gratuito de buhardilla. ¿Pueden informarme?")}`}
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 text-white font-semibold text-sm px-4 py-3 rounded-full shadow-2xl transition-all hover:scale-105 active:scale-95"
+        style={{ backgroundColor: "#25D366" }}
+        aria-label="Contactar por WhatsApp"
+      >
+        <FaWhatsapp className="text-2xl shrink-0" />
+        <span className="hidden sm:inline">+34 600 32 94 28</span>
+      </a>
 
     </div>
   );

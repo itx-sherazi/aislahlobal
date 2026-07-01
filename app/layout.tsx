@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aisla Global  Aislamiento de Buhardilla 100% Subvencionado",
+  title: "Aisla.se  Aislamiento de Buhardilla 100% Subvencionado",
   description: "Aísle su buhardilla sin coste. Financiado al 100% por las empresas energéticas bajo el Real Decreto 36/2023. Ahorre hasta un 30% en sus facturas.",
 };
 
