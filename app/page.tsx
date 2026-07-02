@@ -308,6 +308,56 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── AEROTERMIA ── */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <span className="text-green-600 text-xs sm:text-sm font-semibold uppercase tracking-widest">Energía Eficiente</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2">
+              Aerotermia: Calor y Frío con el 75% de Energía Gratis
+            </h2>
+            <p className="text-gray-600 mt-3 max-w-2xl mx-auto text-sm sm:text-base">
+              La aerotermia extrae energía del aire exterior para calefacción, refrigeración y agua caliente sanitaria (ACS).
+              Solo el 25% es energía eléctrica de pago  el resto lo pone la naturaleza.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <Image src="/img9.jpeg" alt="Sistema de aerotermia  bomba aire-agua con calefacción y ACS" width={600} height={450} className="w-full h-auto object-cover" />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <Image src="/img10.jpeg" alt="Aerotermia: 75% energía gratis, 25% energía de pago" width={600} height={450} className="w-full h-auto object-cover" />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
+            <div className="bg-green-50 rounded-2xl p-6 text-center">
+              <div className="text-4xl font-extrabold text-green-600 mb-2">75%</div>
+              <div className="font-semibold text-gray-800 mb-1">Energía Gratuita</div>
+              <p className="text-gray-500 text-sm">Extraída directamente del aire exterior sin coste adicional.</p>
+            </div>
+            <div className="bg-blue-50 rounded-2xl p-6 text-center">
+              <div className="text-4xl font-extrabold text-blue-600 mb-2">3 en 1</div>
+              <div className="font-semibold text-gray-800 mb-1">Calefacción · Frío · ACS</div>
+              <p className="text-gray-500 text-sm">Un solo sistema cubre todas las necesidades del hogar todo el año.</p>
+            </div>
+            <div className="bg-yellow-50 rounded-2xl p-6 text-center">
+              <div className="text-4xl font-extrabold text-yellow-500 mb-2">-60%</div>
+              <div className="font-semibold text-gray-800 mb-1">Ahorro en Factura</div>
+              <p className="text-gray-500 text-sm">Reducción media frente a sistemas de calefacción convencionales.</p>
+            </div>
+          </div>
+          <div className="text-center mt-10">
+            <a
+              href={`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("👋 Hola, me interesa conocer más sobre aerotermia y aislamiento gratuito. ¿Pueden informarme?")}`}
+              target="_blank" rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded-full text-base transition-all hover:scale-105 shadow-lg"
+            >
+              <FaWhatsapp className="text-xl" /> Consultar sobre Aerotermia
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── TRUST BAR ── */}
       <section className="bg-white border-y border-gray-200 py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
